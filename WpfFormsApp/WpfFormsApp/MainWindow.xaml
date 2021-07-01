@@ -1,0 +1,149 @@
+﻿<Window x:Class="WpfFormsApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfFormsApp"
+        mc:Ignorable="d"
+        Height="600" Width="1000"
+        Closing="MainWindow_Closing" KeyDown="Window_KeyDown">
+    <Grid >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="20*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Menu>
+                <MenuItem x:Name="AddMenuButton" Header="Добавить">
+                    <MenuItem x:Name="AddTgroupMenuButton" Header="Группу" Click="AddTgroupMenuButton_Click" />
+                    <MenuItem x:Name="AddTpropertyMenuButton" Header="Свойство" Click="AddTpropertyMenuButton_Click"/>
+                </MenuItem>
+                <MenuItem x:Name="EditButton" Header="Редактировать" IsEnabled="False" Click="EditButton_Click"/>
+                <MenuItem x:Name="DeleteButton" Header="Удалить" Click="DeleteButton_Click" IsEnabled="False"/>
+            </Menu>
+        </Grid>
+        <Grid Grid.Row="1" Margin="0 20 0 0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0" Margin="10 0 0 10">
+                <WindowsFormsHost x:Name="HostTreeView" Grid.ColumnSpan="2" />
+            </Grid>
+            <Grid Grid.Column="1" Margin="20 0 10 0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+                <Border  Grid.Row="0" Margin="0 0 0 10">
+                    <Grid>
+                        <GroupBox x:Name="AddTgroupGroupBox" Header="Форма добавления группы" Visibility="Visible" GotFocus="AddTgroupGroupBox_GotFocus" LostFocus="AddTgroupGroupBox_LostFocus">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="20*"/>
+                                    <RowDefinition Height="3*"/>
+                                </Grid.RowDefinitions>
+                                <StackPanel Grid.RowSpan="2" Grid.Row="0">
+                                    <DockPanel  Margin="0 20 0 0 ">
+                                        <TextBlock Text="Наименование"/>
+                                        <TextBox x:Name="AddTgroupNameTextBox" Margin="10 0 0 0"/>
+                                    </DockPanel>
+                                </StackPanel>
+                                <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right">
+                                    <Button x:Name="AddTgroupSaveButton" Content="Сохранить" Margin="0 0 40 0" Click="AddTgroupSaveButton_Click"/>
+                                    <Button x:Name="AddTgroupCancelButton" Content="Отмена" Margin="0 0 20 0" Click="AddTgroupCancelButton_Click"/>
+                                </StackPanel>
+                            </Grid>
+                        </GroupBox>
+                        <GroupBox x:Name="AddTpropertyGroupBox" Header="Форма добавления свойства" Visibility="Hidden" GotFocus="AddTpropertyGroupBox_GotFocus" LostFocus="AddTpropertyGroupBox_LostFocus">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="20*"/>
+                                    <RowDefinition Height="3*"/>
+                                </Grid.RowDefinitions>
+                                <StackPanel>
+                                    <Grid  Margin="0 20 0 0 ">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="1*"/>
+                                            <ColumnDefinition Width="2*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid Grid.Column="0">
+                                            <StackPanel>
+                                                <TextBlock  Text="Наименование"/>
+                                                <TextBlock Text="Значение"  Margin="0 20 0 0"/>
+                                            </StackPanel>
+                                        </Grid>
+                                        <Grid Grid.Column="1">
+                                            <StackPanel>
+                                                <TextBox x:Name="AddTpropertyNameTextBox"/>
+                                                <TextBox x:Name="AddTpropertyValueTextBox" Margin="0 20 0 0"/>
+                                            </StackPanel>
+                                        </Grid>
+                                    </Grid>
+                                </StackPanel>
+                                <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right">
+                                    <Button x:Name="AddTpropertySaveButton" Content="Сохранить" Margin="0 0 40 0" Click="AddTpropertySaveButton_Click" />
+                                    <Button x:Name="AddTpropertyCancelButton" Content="Отмена" Margin="0 0 20 0" Height="29" VerticalAlignment="Top" Click="AddTpropertyCancelButton_Click" />
+                                </StackPanel>
+                            </Grid>
+                        </GroupBox>
+                    </Grid>
+                </Border>
+                <Border  Grid.Row="1" >
+                    <Grid Margin="0 0 0 10">
+                        <GroupBox x:Name="EditTgroupGroupBox" Header="Форма редактирования группы" Visibility="Visible"  IsEnabled="False" LostFocus="EditTgroupGroupBox_LostFocus" GotFocus="EditTgroupGroupBox_GotFocus">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="20*"/>
+                                    <RowDefinition Height="3*"/>
+                                </Grid.RowDefinitions>
+                                <StackPanel Grid.RowSpan="2">
+                                    <DockPanel  Margin="0 20 0 0 ">
+                                        <TextBlock Text="Наименование"/>
+                                        <TextBox x:Name="EditTgroupNameTextBox" Margin="10 0 0 0"/>
+                                    </DockPanel>
+                                </StackPanel>
+                                <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right">
+                                    <Button x:Name="EditTgroupSaveButton" Content="Сохранить" Margin="0 0 40 0" Click="EditTgroupSaveButton_Click"/>
+                                    <Button x:Name="EditTgroupCancelButton" Content="Отмена" Margin="0 0 20 0" Click="EditTgroupCancelButton_Click"/>
+                                </StackPanel>
+                            </Grid>
+                        </GroupBox>
+                        <GroupBox x:Name="EditTpropertyGroupBox" Header="Форма редактирования свойства" Visibility="Hidden"  IsEnabled="False" LostFocus="EditTpropertyGroupBox_LostFocus" GotFocus="EditTpropertyGroupBox_GotFocus">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="20*"/>
+                                    <RowDefinition Height="3*"/>
+                                </Grid.RowDefinitions>
+                                <StackPanel>
+                                    <Grid  Margin="0 20 0 0 ">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="1*"/>
+                                            <ColumnDefinition Width="2*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid Grid.Column="0">
+                                            <StackPanel>
+                                                <TextBlock  Text="Наименование"/>
+                                                <TextBlock Text="Значение"  Margin="0 20 0 0"/>
+                                            </StackPanel>
+                                        </Grid>
+                                        <Grid Grid.Column="1">
+                                            <StackPanel>
+                                                <TextBox x:Name="EditTpropertyNameTextBox"/>
+                                                <TextBox x:Name="EditTpropertyValueTextBox" Margin="0 20 0 0"/>
+                                            </StackPanel>
+                                        </Grid>
+                                    </Grid>
+                                </StackPanel>
+                                <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right">
+                                    <Button x:Name="EditTpropertySaveButton" Content="Сохранить" Margin="0 0 40 0" Click="EditTpropertySaveButton_Click" />
+                                    <Button x:Name="EditTpropertyCancelButton" Content="Отмена" Margin="0 0 20 0" Click="EditTpropertyCancelButton_Click" />
+                                </StackPanel>
+                            </Grid>
+                        </GroupBox>
+                    </Grid>
+                </Border>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>
