@@ -21,7 +21,7 @@ using TreeView = System.Windows.Forms.TreeView;
 using MessageBox = System.Windows.MessageBox;
 using Color = System.Drawing.Color;
 
-namespace WpfFormsApp
+namespace TreeViewWpfDB
 {
     public partial class MainWindow : Window
     {

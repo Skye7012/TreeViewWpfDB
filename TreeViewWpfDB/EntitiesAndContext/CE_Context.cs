@@ -8,7 +8,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Data.Entity;
 using System.Windows.Forms;
 
-namespace WpfFormsApp
+namespace TreeViewWpfDB
 {
     public class CE_Context : DbContext
     {
